@@ -1,0 +1,24 @@
+sudo mysql -u root
+
+CREATE DATABASE crud_flask_python;
+USE crud_flask_python;
+
+CREATE TABLE carros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    marca VARCHAR(100),
+    modelo VARCHAR(100),
+    year VARCHAR(4),
+    color VARCHAR(50),
+    puertas INT,
+    favorito VARCHAR(10),
+    foto VARCHAR(255)
+);
+EXIT;
+
+mkdir -p static/assets/fotos_carros
+
+source env/bin/activate
+
+python app.py
+
+app.run(host="0.0.0.0", debug=True, port=8000)
