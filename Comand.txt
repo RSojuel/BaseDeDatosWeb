@@ -22,3 +22,29 @@ source env/bin/activate
 python app.py
 
 app.run(host="0.0.0.0", debug=True, port=8000)
+
+
+------------------------------------------------------
+sudo mysql
+
+CREATE DATABASE IF NOT EXISTS crud_flask_python;
+
+CREATE USER 'flaskuser'@'localhost' IDENTIFIED BY 'flaskpass';
+
+GRANT ALL PRIVILEGES ON crud_flask_python.* TO 'flaskuser'@'localhost';
+
+FLUSH PRIVILEGES;
+EXIT;
+
+
+nano ~/Escritorio/Crud-con-FLASK-PYTHON-y-MySQL/app/conexionBD.py
+
+
+mydb = mysql.connector.connect(
+    host ="localhost",
+    user ="flaskuser",
+    passwd ="flaskpass",
+    database = "crud_flask_python"
+)
+
+
