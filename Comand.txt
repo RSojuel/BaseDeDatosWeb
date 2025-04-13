@@ -46,5 +46,6 @@ mydb = mysql.connector.connect(
     passwd ="flaskpass",
     database = "crud_flask_python"
 )
-
+----------------------------------------------------
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 
