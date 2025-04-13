@@ -49,3 +49,22 @@ mydb = mysql.connector.connect(
 ----------------------------------------------------
 sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 
+sudo mysql
+
+CREATE USER 'flaskuser'@'%' IDENTIFIED BY 'flaskpass';
+GRANT ALL PRIVILEGES ON crud_flask_python.* TO 'flaskuser'@'%';
+FLUSH PRIVILEGES;
+EXIT;
+
+
+sudo ufw allow 3306
+
+
+
+
+
+
+
+
+
+
