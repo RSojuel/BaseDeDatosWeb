@@ -1,0 +1,35 @@
+sudo apt-get install apache2
+sudo apt install php libapache2-mod-php php-mysql
+sudo apt install postfix
+sudo service postfix restart
+EN CASO DE HABER ERROR:
+sudo dpkg-reconfigure postfix
+Instalar Dovecot:
+Dovecot es un servidor IMAP/POP3 que usaremos para enviar y recibir mails al servidor SMTP Postfix.
+sudo apt install dovecot-imapd dovecot-pop3d
+sudo service dovecot restart
+Por último instalarás Squirrelmail, como cliente para enviar y recibir correo a través del navegador.
+Squirrelmail no está en el repositorio de Ubuntu así que tendrás que descargarlo de su web.
+wget https://sourceforge.net/projects/squirrelmail/files/stable/1.4.22/squirrelmail-webmail-1.4.22.zip
+unzip squirrelmail-webmail-1.4.22.zip
+sudo mv squirrelmail-webmail-1.4.22 /var/www/html/
+sudo chown -R www-data:www-data /var/www/html/squirrelmail-webmail-1.4.22/
+sudo chmod 755 -R /var/www/html/squirrelmail-webmail-1.4.22/
+sudo mv /var/www/html/squirrelmail-webmail-1.4.22/ /var/www/html/squirrelmail
+sudo perl /var/www/html/squirrelmail/config/conf.pl
+IR A OPCION 2, LUEGO OPCION 1 y colocar el nombre del dominio
+Luego ir a la opcion 4 y colocar en los items 1,2,y 11 lo siguiente:
+1: /var/www/html/squirrelmail/data/
+2: /var/www/html/squirrelmail/attach/
+11: true
+SAVE y QUIT
+
+AÑADIR USUARIOS
+sudo adduser gerencia
+sudo usermod -m -d /var/www/html/gerencia gerencia
+sudo mkdir -p /var/www/html/gerencia
+
+sudo adduser sistemas
+sudo usermod -m -d /var/www/html/sistemas sistemas
+sudo mkdir -p /var/www/html/sistemas
+sudo chown sistemas:sistemas sistemas
